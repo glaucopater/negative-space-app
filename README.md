@@ -1,6 +1,4 @@
-# negative-space
-
-A negative Space Generator
+# A negative Space Generator
 
 ## [Live Demo](https://main--sensational-gecko-5e200b.netlify.app/) ⚡
 
@@ -11,3 +9,8 @@ A negative Space Generator
 # Images Source
 
 - picsum.photos
+
+
+Made with: 
+- TypeScript
+- Vite ⚡⚡⚡
