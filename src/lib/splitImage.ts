@@ -1,4 +1,8 @@
-export async function splitImage(IMAGE_PATH: string, MARGIN_SIZE: number) {
+export async function splitImage(
+  IMAGE_PATH: string,
+  MARGIN_SIZE: number,
+  BG_COLOR: string
+) {
   // Load the original image
   const originalImage = new Image();
   originalImage.src = IMAGE_PATH;
@@ -19,7 +23,7 @@ export async function splitImage(IMAGE_PATH: string, MARGIN_SIZE: number) {
   newCanvas.width = originalWidth + MARGIN_SIZE * 2;
   newCanvas.height = originalHeight + MARGIN_SIZE * 2;
   const newCtx = newCanvas.getContext('2d');
-  newCtx!.fillStyle = '#111';
+  newCtx!.fillStyle = BG_COLOR;
   newCtx!.fillRect(0, 0, newCanvas.width, newCanvas.height);
 
   // Draw the tiles on the new image
@@ -45,6 +49,7 @@ export async function splitImage(IMAGE_PATH: string, MARGIN_SIZE: number) {
         tileHeight
       );
 
+      tileCtx!.fillStyle = BG_COLOR;
       tileCtx!.fillRect(0, 0, tileWidth, MARGIN_SIZE);
       tileCtx!.fillRect(0, 0, MARGIN_SIZE, tileHeight);
       tileCtx!.fillRect(0, tileHeight - MARGIN_SIZE, tileWidth, MARGIN_SIZE);
