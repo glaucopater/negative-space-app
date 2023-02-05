@@ -1,6 +1,8 @@
 {
   "name": "negative-space-app",
-  "private": true,
+  "author": "Glauco Pater",
+  "license": "MIT",
+  "private": false,
   "version": "0.2.0",
   "type": "module",
   "scripts": {

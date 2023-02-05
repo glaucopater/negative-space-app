@@ -1,5 +1,5 @@
 import './style.css';
-import { splitImage } from './splitImage';
+import { splitImage } from './lib/splitImage';
 
 const MARGIN_SIZE = 20;
 const WIDTH = 640;
