@@ -1,23 +1,18 @@
-import './style.css'
-import typescriptLogo from './typescript.svg'
-import { setupCounter } from './counter'
+import './style.css';
+import { splitImage } from './splitImage';
+
+const MARGIN_SIZE = 20;
+const WIDTH = 640;
+const HEIGHT = 480;
+const IMAGE_PATH = `https://picsum.photos/${WIDTH}/${HEIGHT}`;
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://www.typescriptlang.org/" target="_blank">
-      <img src="${typescriptLogo}" class="logo vanilla" alt="TypeScript logo" />
-    </a>
-    <h1>Vite + TypeScript</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite and TypeScript logos to learn more
-    </p>
-  </div>
-`
+<div id="app">
+<img src="https://picsum.photos/640/480" />
+<div id="result"></div>
+</div>
+`;
 
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
+//setupCounter(document.querySelector<HTMLButtonElement>('#counter')!);
+
+splitImage(IMAGE_PATH, MARGIN_SIZE);
