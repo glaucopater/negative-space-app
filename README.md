@@ -18,7 +18,7 @@ You can customize the app's behavior using the following URL parameters:
 
 Example:
 
-https://main--sensational-gecko-5e200b.netlify.app/?width=640&height=480&margin=20&src=https://picsum.photos/640/480&bgcolor=#fefefe
+https://main--sensational-gecko-5e200b.netlify.app/?width=640&height=480&margin=20&src=https://picsum.photos/640/480&bgcolor=%23fefe00
 
 
 # Images Source
