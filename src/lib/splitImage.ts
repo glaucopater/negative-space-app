@@ -1,7 +1,7 @@
 export async function splitImage(
   IMAGE_PATH: string,
   MARGIN_SIZE: number,
-  BG_COLOR: string
+  BG_COLOR: string,
 ) {
   // Load the original image
   const originalImage = new Image();
@@ -46,7 +46,7 @@ export async function splitImage(
         0,
         0,
         tileWidth,
-        tileHeight
+        tileHeight,
       );
 
       tileCtx!.fillStyle = BG_COLOR;
@@ -55,12 +55,12 @@ export async function splitImage(
       tileCtx!.fillRect(0, tileHeight - MARGIN_SIZE, tileWidth, MARGIN_SIZE);
       tileCtx!.fillRect(tileWidth - MARGIN_SIZE, 0, tileWidth, tileHeight);
 
-      addCustomElementtContainer(tileCanvas);
+      addCustomElementContainer(tileCanvas);
     }
   }
 }
 
-function addCustomElementtContainer(newContent: HTMLCanvasElement) {
+function addCustomElementContainer(newContent: HTMLCanvasElement) {
   const container = document.getElementById('result');
   if (container) container.appendChild(newContent);
 }
