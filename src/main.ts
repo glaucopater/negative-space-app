@@ -1,35 +1,62 @@
 import './style.css';
+
+import packageJson from '../package.json';
 import { splitImage } from './lib/splitImage';
 
 const searchParams = new URLSearchParams(document.location.search);
 
-// bare minimun of 100px x 100px
-const WIDTH =
-  searchParams.has('width') && Number(searchParams.get('width')) > 100
-    ? searchParams.get('width')
-    : 640;
-const HEIGHT =
-  searchParams.has('height') && Number(searchParams.get('height')) > 100
-    ? Number(searchParams.get('height'))
-    : 480;
-const MARGIN_SIZE =
-  searchParams.has('margin') && Number(searchParams.get('margin')) > 0
-    ? Number(searchParams.get('margin'))
-    : 20;
-const IMAGE_PATH =
-  searchParams.has('src') && searchParams.get('src')
-    ? searchParams.get('src')!
-    : `https://picsum.photos/${WIDTH}/${HEIGHT}`;
-const BG_COLOR =
-  searchParams.has('bgcolor') && searchParams.get('bgcolor')
-    ? String(searchParams.get('bgcolor'))!
-    : '#111';
+const getParam = (key: string, defaultValue: any, minValue = -Infinity) => {
+  const value = Number(searchParams.get(key));
+  return value > minValue ? value : defaultValue;
+};
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-<div id="app">
-<img src="${IMAGE_PATH}" width="640" height="480" />
-<div id="result"></div>
-</div>
-`;
+const WIDTH = getParam('width', 640, 100);
+const HEIGHT = getParam('height', 480, 100);
+const MARGIN_SIZE = getParam('margin', 20, 0);
+const IMAGE_PATH = searchParams.get('src') || `https://picsum.photos/${WIDTH}/${HEIGHT}`;
+const BG_COLOR = searchParams.get('bgcolor')
+  ? decodeURIComponent(searchParams.get('bgcolor') as string)
+  : '#111';
+
+const appDiv = document.querySelector<HTMLDivElement>('#app');
+if (appDiv) {
+  appDiv.innerHTML = `
+    <div id="app">
+      <h2><a href="/">${packageJson.description}</a></h2>
+      <p class="helpBtn">Help ℹ️</p>
+      <img src="${IMAGE_PATH}" width="${WIDTH}" height="${HEIGHT}" />
+      <div id="result"></div>
+    </div>
+    <div id="helpModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>How to Use querystring parameters:</h2>
+        <ul>
+          <li><strong>width</strong>: Sets the width of the image. Minimum value is 100.</li>
+          <li><strong>height</strong>: Sets the height of the image. Minimum value is 100.</li>
+          <li><strong>margin</strong>: Sets the margin size. Minimum value is 0.</li>
+          <li><strong>src</strong>: Sets the image source URL.</li>
+          <li><strong>bgcolor</strong>: Sets the background color. Hex format is allowed replacing # with %23</li>
+        </ul>
+      </div>
+    </div>
+  `;
+}
+
+// Open the modal
+document.querySelector('.helpBtn')?.addEventListener('click', () => {
+  const helpModal = document.querySelector('#helpModal');
+  if (helpModal) {
+    (helpModal as HTMLElement).style.display = 'block';
+  }
+});
+
+// Close the modal
+document.querySelector('.close')?.addEventListener('click', () => {
+  const helpModal = document.querySelector('#helpModal');
+  if (helpModal) {
+    (helpModal as HTMLElement).style.display = 'none';
+  }
+});
 
 splitImage(IMAGE_PATH, MARGIN_SIZE, BG_COLOR);

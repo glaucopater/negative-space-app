@@ -1,8 +1,8 @@
-/* bigshot one font */
-@import url('https://fonts.googleapis.com/css?family=Bigshot+One');
+/* Roboto */
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 
 body {
-  font-family: 'Bigshot One', serif;
+  font-family: 'Roboto', sans-serif;
   display: flex;
   flex-direction: column;
   place-items: center;
@@ -10,12 +10,18 @@ body {
 }
 
 h2 {
+  text-shadow: white 4px 0 12px;
+  animation: textShadowGeometryChange 5s infinite; /* 3s duration, infinite loop */
+
+}
+
+h2 > a {
   color: #111;
-  text-shadow: turquoise 1px 0 10px;
+  text-decoration: none;
 }
 
 #app {
-  font-family: 'Bigshot One', serif;
+  font-family: 'Roboto', sans-serif;
   color: #317873;
   display: flex;
   flex-direction: row;
@@ -63,4 +69,56 @@ h2 {
   #result canvas {
     width: 33.3%;
   }
+}
+
+
+@keyframes textShadowGeometryChange {
+  0% {
+    text-shadow: white 4px 0 12px;
+  }
+  25% {
+    text-shadow: white 6px 2px 14px;
+  }
+  50% {
+    text-shadow: white 2px -2px 10px;
+  }
+  75% {
+    text-shadow: white -4px -4px 16px;
+  }
+  100% {
+    text-shadow: white 4px 0 12px;
+  }
+}
+
+.helpBtn {
+  cursor: pointer;
+}
+
+/* Modal styles */
+.modal {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1;
+}
+
+.modal-content {
+  position: relative;
+  margin: auto;
+  padding: 20px;
+  background-color: #fff;
+  width: 50%;
+
+}
+
+.close {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  font-size: 24px;
+  cursor: pointer;
 }
