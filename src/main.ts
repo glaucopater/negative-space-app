@@ -24,13 +24,15 @@ if (appDiv) {
     <div id="app">
       <h2><a href="/">${packageJson.description}</a></h2>
       <p class="helpBtn">Help ℹ️</p>
+      <div class="container">
       <img src="${IMAGE_PATH}" width="${WIDTH}" height="${HEIGHT}" />
       <div id="result"></div>
+      </div>
     </div>
     <div id="helpModal" class="modal">
       <div class="modal-content">
         <span class="close">&times;</span>
-        <h2>How to Use querystring parameters:</h2>
+        <h2>How to use query string parameters:</h2>
         <ul>
           <li><strong>width</strong>: Sets the width of the image. Minimum value is 100.</li>
           <li><strong>height</strong>: Sets the height of the image. Minimum value is 100.</li>
@@ -38,6 +40,8 @@ if (appDiv) {
           <li><strong>src</strong>: Sets the image source URL.</li>
           <li><strong>bgcolor</strong>: Sets the background color. Hex format is allowed replacing # with %23</li>
         </ul>
+        <p>Example: <a href='/?width=800&height=600&margin=10&bgcolor=%23FFFFFF'>/?width=800&height=600&margin=10&bgcolor=%23FFFFFF</>
+        </p>
       </div>
     </div>
   `;
