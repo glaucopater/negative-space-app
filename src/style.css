@@ -12,7 +12,6 @@ body {
 h2 {
   text-shadow: white 4px 0 12px;
   animation: textShadowGeometryChange 5s infinite; /* 3s duration, infinite loop */
-
 }
 
 h2 > a {
@@ -24,7 +23,7 @@ h2 > a {
   font-family: 'Roboto', sans-serif;
   color: #317873;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   place-content: center;
   place-items: center;
 }
@@ -71,7 +70,6 @@ h2 > a {
   }
 }
 
-
 @keyframes textShadowGeometryChange {
   0% {
     text-shadow: white 4px 0 12px;
@@ -95,6 +93,7 @@ h2 > a {
 }
 
 /* Modal styles */
+
 .modal {
   display: none;
   position: fixed;
@@ -102,17 +101,29 @@ h2 > a {
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: #11111130;
   z-index: 1;
 }
 
 .modal-content {
   position: relative;
   margin: auto;
+  margin-top: 10%;
   padding: 20px;
-  background-color: #fff;
-  width: 50%;
+  background-color: #ffffff;
+  width: 70%;
+  border-radius: 8px;
+  border: 1px solid #11111150;
+  box-shadow: 4px 4px 4px 4px #11111130;
+  color: #111111;
+}
 
+.modal-content a {
+  text-decoration: none;
+}
+
+.modal-content a:hover {
+  text-decoration: underline;
 }
 
 .close {
@@ -121,4 +132,15 @@ h2 > a {
   top: 5px;
   font-size: 24px;
   cursor: pointer;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+}
+
+@media screen and (max-width: 1024px) {
+  .container {
+    flex-direction: column;
+  }
 }
